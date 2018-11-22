@@ -1,0 +1,34 @@
+import React from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
+
+const Display = props => {
+	const { result } = props;
+	return(
+		<View style = { styles.container } >
+			<TextInput style={styles.input} placeholder='Resultado' editable={false}>
+				{ result }
+			</TextInput>
+		</View>
+	);
+};
+
+const styles = StyleSheet.create({
+	container: {
+		marginTop: 5,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	input: {
+		margin: 25,
+		height: 60,
+		width: 300,
+		borderColor: 'gray',
+		borderWidth: 1,
+		fontWeight: 'bold',
+		fontSize: 30,
+		justifyContent: 'center',
+		textAlign: 'center',
+	},
+});
+
+export default Display;
