@@ -38,10 +38,10 @@ export default class MainPage extends React.Component {
         </View>
         <View style={[Styles.containerCol]}>
           <TouchableOpacity style={Styles.buttonOption} onPress={this.onClick.bind(this, "Simple")}>
-            <Text style={Styles.text}> Simples </Text>
+            <Text style={Styles.inputButtonText}> Simples </Text>
           </TouchableOpacity>
           <TouchableOpacity style={Styles.buttonOption} onPress={this.onClick.bind(this, "Science")}>
-            <Text style={Styles.text}> Científica </Text>
+            <Text style={Styles.inputButtonText}> Científica </Text>
           </TouchableOpacity>
         </View>
       </View>

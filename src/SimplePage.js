@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-
+import React from 'react';
+import { View } from 'react-native';
 import Display from './Display.js';
+import InputButton from './InputButton.js';
 import Styles  from './Styles.js';
+
+const inputButtons = [
+    [1, 2, 3, '+'],
+    [4, 5, 6, '-'],
+    [7, 8, 9, '*'],
+    [0, '.', '=', '/'],
+    ['C', 'CE']
+];
 
 export default class SimplePage extends React.Component {
 	static navigationOptions = {
@@ -23,7 +31,7 @@ export default class SimplePage extends React.Component {
         this.state = this.initialState;
 	}
 
-	onClick(param) {
+	onPress(param) {
 		console.log(param);
 		let numbers = "0123456789.";
         if (numbers.indexOf(param) >= 0) {
@@ -70,11 +78,11 @@ export default class SimplePage extends React.Component {
                 });
                 break;
 
-            case 'ce':
+            case 'CE':
                 this.setState(this.initialState);
                     break;
 
-            case 'c':
+            case 'C':
                 this.setState({result: ""});
                 break;
         }
@@ -84,71 +92,20 @@ export default class SimplePage extends React.Component {
 		return (
 			<View style={Styles.containerCol}>
 				<Display result={this.state.result} />
-				<View style={Styles.containerRow}>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "1")}>
-						<Text style={Styles.text}> 1 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "2")}>
-						<Text style={Styles.text}> 2 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "3")}>
-						<Text style={Styles.text}> 3 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonOperation} onPress={this.onClick.bind(this, "+")}>
-						<Text style={Styles.text}> + </Text>
-					</TouchableOpacity>
-				</View>
-				<View style={Styles.containerRow}>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "4")}>
-						<Text style={Styles.text}> 4 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "5")}>
-						<Text style={Styles.text}> 5 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "6")}>
-						<Text style={Styles.text}> 6 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonOperation} onPress={this.onClick.bind(this, "-")}>
-						<Text style={Styles.text}> - </Text>
-					</TouchableOpacity>
-				</View>
-				<View style={Styles.containerRow}>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "7")}>
-						<Text style={Styles.text}> 7 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "8")}>
-						<Text style={Styles.text}> 8 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "9")}>
-						<Text style={Styles.text}> 9 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonOperation} onPress={this.onClick.bind(this, "*")}>
-						<Text style={Styles.text}> * </Text>
-					</TouchableOpacity>
-				</View>
-				<View style={Styles.containerRow}>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, "0")}>
-						<Text style={Styles.text}> 0 </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonNumber} onPress={this.onClick.bind(this, ".")}>
-						<Text style={Styles.text}> . </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonResult} onPress={this.onClick.bind(this, "=")}>
-						<Text style={Styles.text}> = </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonOperation} onPress={this.onClick.bind(this, "/")}>
-						<Text style={Styles.text}> / </Text>
-					</TouchableOpacity>
-				</View>
-				<View style={Styles.containerRow}>
-					<TouchableOpacity style={Styles.buttonOperation} onPress={this.onClick.bind(this, "c")}>
-						<Text style={Styles.text}> C </Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={Styles.buttonOperation} onPress={this.onClick.bind(this, "ce")}>
-						<Text style={Styles.text}> CE </Text>
-					</TouchableOpacity>
-				</View>
+                <View style={Styles.inputContainer}>
+                    {this.renderInputButtons()}
+                </View>
 			</View>
 		);
 	}
+
+    renderInputButtons() {
+        let views = inputButtons.map((row, idx) => {
+            let inputRow = row.map((buttonVal, columnIdx) => {
+                return <InputButton value={buttonVal} onPress={this.onPress.bind(this, buttonVal)} key={'butt-' + columnIdx} />;
+            });
+            return <View style={Styles.containerRow} key={'row-' + idx}>{inputRow}</View>;
+        });
+        return views;
+    }
 }

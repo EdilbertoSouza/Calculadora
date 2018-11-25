@@ -21,36 +21,6 @@ const Styles = StyleSheet.create({
 		padding: 10,
 		width: 350,
 	},
-	buttonNumber: {
-		borderRadius: 5,
-		backgroundColor: '#1976D2',
-		marginTop: 5,
-		margin: 5,
-		alignItems: 'center',
-		justifyContent: 'center',
-		height: 60,
-		width: 60,
-	},		
-	buttonOperation: {
-		borderRadius: 5,
-		backgroundColor: '#757575',
-		marginTop: 5,
-		margin: 5,
-		alignItems: 'center',
-		justifyContent: 'center',
-		height: 60,
-		width: 60,
-	},
-	buttonResult: {
-		borderRadius: 5,
-		backgroundColor: '#558B2F',
-		marginTop: 5,
-		margin: 5,
-		alignItems: 'center',
-		justifyContent: 'center',
-		height: 60,
-		width: 60,
-	},
 	buttonOption: {
 		borderRadius: 5,
 		backgroundColor: '#757575',
@@ -59,18 +29,51 @@ const Styles = StyleSheet.create({
 		justifyContent: 'center',
 		height: 100,
 	},
-	text: {
-		color: '#FFF',
-		fontWeight: 'bold',
-		fontSize: 30,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
 	textOption: {
 		fontSize: 18,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
+    displayContainer: {		
+		marginTop: 5,
+		alignItems: 'center',
+		justifyContent: 'center',
+    },
+    displayText: {
+		margin: 25,
+		height: 60,
+		width: 300,
+		borderColor: 'gray',
+		borderWidth: 1,
+		fontWeight: 'bold',
+		fontSize: 30,
+		justifyContent: 'center',
+		textAlign: 'center',
+    },
+    inputContainer: {
+        flex: 8,
+    },
+    inputButton: {
+		borderRadius: 5,
+		backgroundColor: '#1976D2',
+		marginTop: 5,
+		margin: 5,
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: 60,
+		width: 60,
+    },
+    inputButtonText: {
+		color: 'white',
+		fontWeight: 'bold',
+		fontSize: 30,
+		alignItems: 'center',
+		justifyContent: 'center',
+    },
+    inputRow: {
+        flex: 1,
+        flexDirection: 'row'
+    }
 });
 
 export default Styles;
